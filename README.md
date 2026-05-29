@@ -8,13 +8,13 @@
 
 ## Research Question
 
-As the product transitioned toward a newsletter-first acquisition model, a strategic question emerged: **do media category preferences and early engagement behaviors predict long-term retention and user satisfaction?** And does NPS hold up as the newsletter audience grows?
+As the product transitioned toward a new product (PRODUCTB) and acquisition model, a strategic question emerged: **do media category preferences and early engagement behaviors predict long-term retention and user satisfaction?** And does NPS hold up as the newsletter audience grows?
 
 This project tested three standing product hypotheses using a longitudinal dataset I assembled from four independent NPS surveys combined with behavioral data from Mixpanel.
 
 > **Hypothesis 1:** Users who engage across multiple media categories have longer retention  
 > **Hypothesis 2:** Social features (follower count) are associated with higher engagement  
-> **Hypothesis 3:** NPS differs meaningfully between app users and newsletter users  
+> **Hypothesis 3:** NPS differs meaningfully between ProductA and ProductB users  
 
 ---
 
@@ -22,7 +22,7 @@ This project tested three standing product hypotheses using a longitudinal datas
 
 | Source | Description | N |
 |---|---|---|
-| NPS Surveys (2021, 2023, 2024, 2025) | Designed, recruited, administered, and analyzed by the author | ~800 responses |
+| NPS Surveys (2021, 2023, 2024, 2025) | Designed, recruited, administered, and analyzed by the author | ~1500 responses |
 | Mixpanel Behavioral Export | Total sessions, early retention flags, genre engagement, follower count | Joined on email |
 
 **Key variables:**
@@ -37,7 +37,7 @@ This project tested three standing product hypotheses using a longitudinal datas
 - `user_type` — app_user or newsletter (derived from session data presence)
 - `survey_year` — 2021, 2023, 2024, or 2025
 
-> **Note:** Raw data is not included in this repo as it contains personally identifiable information. A anonymized sample with the same structure is provided in `/data/sample.csv`.
+> **Note:** Raw data is not included in this repo as it contains personally identifiable information. A anonymized sample with the same structure is provided in `/data/analysis_ready.csv`.
 
 ---
 
@@ -111,7 +111,7 @@ nps-retention-analysis/
 │
 ├── README.md
 ├── data/
-│   └── sample.csv               # Anonymized sample (same structure as full dataset)
+│   └── analysis_ready.csv               # Anonymized sample (same structure as full dataset)
 ├── sql/
 │   └── join_and_flag.sql        # Full SQLite pipeline query
 ├── notebooks/
@@ -135,7 +135,7 @@ nps-retention-analysis/
 
 1. Clone the repo
 2. Open `notebooks/nps_regression_analysis.ipynb` in [Google Colab](https://colab.research.google.com) or Jupyter
-3. Upload your own data CSV when prompted in Step 2, or use `data/sample.csv` to explore the structure
+3. Upload your own data CSV when prompted in Step 2, or use `data/analysis_ready.csv` to explore the structure
 4. Update column mappings in Step 4 if using your own data
 5. Run all cells in order
 
@@ -148,7 +148,7 @@ pandas · numpy · matplotlib · seaborn · statsmodels
 
 ## About
 
-This analysis was conducted as part of a mixed-methods research program at [Company Name]. I designed all four survey instruments, recruited participants, administered the surveys, built the data pipeline, and performed the statistical analysis independently.
+This analysis was conducted as part of a mixed-methods research program during my work for an entertainent company. I designed all four survey instruments, recruited participants, administered the surveys, built the data pipeline, and performed the statistical analysis independently.
 
-**Ross Sauby** — UX Researcher  
-[Portfolio](https://rosssauby.myportfolio.com) · [LinkedIn](https://linkedin.com/in/yourprofile)
+**Ross Sauby** — UX Researcher & Data Analyst
+[Portfolio](https://rosssauby.myportfolio.com)
