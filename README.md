@@ -124,7 +124,7 @@ Full model outputs and odds ratio forest plots are in the notebook.
 
 ## Key Takeaway
 
-Multi-category users — particularly those engaging with TV/Movies and Books together — were significantly more likely to be Promoters and showed higher long-term engagement. The NPS decline between 2021 and 2025 was partly **compositional**: the growing ProductB segment had a lower baseline Promoter rate (24%) than ProductA users (34%), rather than reflecting deteriorating experience among existing users.
+Multi-category users, particularly those engaging with TV/Movies and Books together, were significantly more likely to be Promoters and showed higher long-term engagement. The NPS decline between 2021 and 2025 was partly **compositional**: the growing ProductB segment had a lower baseline Promoter rate (24%) than ProductA users (34%), rather than reflecting deteriorating experience among existing users.
 
 **Decision:** Multi-category ProductBs were retained as the primary format based on these findings.
 
