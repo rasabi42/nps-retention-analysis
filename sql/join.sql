@@ -1,18 +1,4 @@
--- =============================================================
--- NPS Retention Analysis — Full Data Pipeline
--- Author: Ross Sauby
--- Tool:   SQLite
--- Description:
---   Combines four NPS survey waves (2021, 2023, 2024, 2025)
---   with Mixpanel behavioral data. Normalizes email casing,
---   flags user type, and excludes session outliers.
--- =============================================================
-
-
--- -------------------------------------------------------------
 -- STEP 1: SANITY CHECKS
--- Run these before anything else to understand your data.
--- -------------------------------------------------------------
 
 -- Row counts per survey
 SELECT 'survey_2021' AS source, COUNT(*) AS rows FROM survey_2021
@@ -43,11 +29,7 @@ SELECT * FROM survey_nps       LIMIT 3;
 SELECT * FROM behavioral_data  LIMIT 3;
 
 
--- -------------------------------------------------------------
 -- STEP 2: MATCH RATE CHECK
--- Understand how many survey respondents have behavioral data
--- before committing to the full join.
--- -------------------------------------------------------------
 
 SELECT
     COUNT(*)                          AS total_survey_rows,
@@ -61,10 +43,7 @@ LEFT JOIN behavioral_data b
     ON LOWER(s.email) = LOWER(b.email);
 
 
--- -------------------------------------------------------------
 -- STEP 3: QUICK ANALYSIS QUERIES
--- Useful for validating data before exporting to Python.
--- -------------------------------------------------------------
 
 -- Promoter rate by platform
 SELECT
@@ -123,45 +102,35 @@ HAVING COUNT(*) > 1
 ORDER BY appearances DESC;
 
 
--- -------------------------------------------------------------
+
 -- STEP 5: FINAL EXPORT QUERY
--- Deduplicates behavioral data via CTE, joins to survey on
--- normalized email, flags user type, and excludes session
--- outliers above a hard cutoff of 12,000 sessions.
--- -------------------------------------------------------------
+
 
 WITH behavior_dedup AS (
     SELECT * FROM (
         SELECT
             *,
-            -- Assign row number per user, most recent first_app_open first
             ROW_NUMBER() OVER (
                 PARTITION BY LOWER(TRIM(email))
                 ORDER BY first_app_open DESC
             ) AS rn
         FROM behavioral_data
     )
-    -- Keep only the most recent record per user
     WHERE rn = 1
 )
 
 SELECT
-    -- Survey fields
     s.email,
     s.nps,
     s.survey                                AS survey_year,
     s.primary_media                         AS primary_category,
     s.age,
     s.gender,
-
-    -- Behavioral fields
     b.total_app_sessions,
     b.first_app_open,
     b.birth_year,
     b.region,
 
-    -- Derived: user type flag
-    -- Newsletter users have no Mixpanel match (no session data)
     CASE
         WHEN b.total_app_sessions IS NULL THEN 'newsletter'
         ELSE 'app_user'
@@ -172,10 +141,8 @@ LEFT JOIN behavior_dedup b
     ON LOWER(TRIM(s.email)) = LOWER(TRIM(b.email))
 
 WHERE
-    -- Retain newsletter users for survey-only models in Python
     b.total_app_sessions IS NULL
     OR
-    -- Exclude session outliers (hard cutoff at 12,000 sessions)
     CAST(b.total_app_sessions AS INTEGER) <= 12000
 
 ORDER BY s.survey, s.email;
