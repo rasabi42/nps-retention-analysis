@@ -1,5 +1,4 @@
 -- STEP 1: SANITY CHECKS
-
 -- Row counts per survey
 SELECT 'survey_2021' AS source, COUNT(*) AS rows FROM survey_2021
 UNION ALL
@@ -30,7 +29,6 @@ SELECT * FROM behavioral_data  LIMIT 3;
 
 
 -- STEP 2: MATCH RATE CHECK
-
 SELECT
     COUNT(*)                          AS total_survey_rows,
     COUNT(b.email)                    AS matched_to_behavioral,
@@ -44,7 +42,6 @@ LEFT JOIN behavioral_data b
 
 
 -- STEP 3: QUICK ANALYSIS QUERIES
-
 -- Promoter rate by platform
 SELECT
     b.platform,
@@ -84,14 +81,7 @@ GROUP BY s.primary_category
 ORDER BY promoter_rate_pct DESC;
 
 
--- -------------------------------------------------------------
 -- STEP 4: DEDUPLICATE BEHAVIORAL DATA
--- The behavioral export contained duplicate email records
--- (same user appearing multiple times). A CTE using ROW_NUMBER()
--- keeps only the most recent record per user before joining.
--- LOWER(TRIM()) applied to handle casing and whitespace variants.
--- -------------------------------------------------------------
-
 -- Preview duplicates before deduplication
 SELECT
     LOWER(TRIM(email))  AS email_normalized,
@@ -104,8 +94,6 @@ ORDER BY appearances DESC;
 
 
 -- STEP 5: FINAL EXPORT QUERY
-
-
 WITH behavior_dedup AS (
     SELECT * FROM (
         SELECT
