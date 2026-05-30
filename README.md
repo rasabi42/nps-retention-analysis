@@ -37,7 +37,7 @@ This project tested three standing product hypotheses using a longitudinal datas
 - `user_type` — app_user or newsletter (derived from session data presence)
 - `survey_year` — 2021, 2023, 2024, or 2025
 
-> **Note:** Raw data is not included in this repo as it contains personally identifiable information. A anonymized sample with the same structure is provided in `/data/analysis_ready.csv`.
+> **Note:** Raw data is not included in this repo as it contains personally identifiable information. An anonymized sample with the same structure is provided in `/data/analysis_ready.csv`.
 
 ---
 
