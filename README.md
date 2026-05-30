@@ -8,7 +8,7 @@
 
 ## Research Question
 
-As the product transitioned toward a new product (PRODUCTB) and acquisition model, a strategic question emerged: **do media category preferences and early engagement behaviors predict long-term retention and user satisfaction?** And does NPS hold up as the newsletter audience grows?
+As the product transitioned toward a new product (ProductB) and acquisition model, a strategic question emerged: **do media category preferences and early engagement behaviors predict long-term retention and user satisfaction?** And does NPS hold up as the ProductB audience grows?
 
 This project tested three standing product hypotheses using a longitudinal dataset I assembled from four independent NPS surveys combined with behavioral data from Mixpanel.
 
@@ -76,9 +76,9 @@ Nine statistical models across primary and secondary research questions.
 | Question | Method | Key Finding |
 |---|---|---|
 | Does category predict Promoter status? | Logistic regression | TV/Movies+Books users 54% more likely to be Promoters (OR=1.54, p<0.05) |
-| How has NPS trended 2021–2025? | Z-tests by year | Significant decline 2021→2025 (39.1% → 26.1%), coinciding with newsletter growth |
+| How has NPS trended 2021–2025? | Z-tests by year | Significant decline 2021→2025 (39.1% → 26.1%), coinciding with ProductB growth |
 | Does engagement predict Promoter status? | Logistic regression | Each unit increase in log_sessions associated with 23% higher Promoter likelihood (OR=1.23) |
-| Do app and newsletter users differ? | Z-test | App users: 33.8% Promoter rate vs newsletter users: 24.0% (significant) |
+| Do ProductA and ProductB users differ? | Z-test | ProductA users: 33.8% Promoter rate vs ProductB users: 24.0% (significant) |
 
 ### Secondary / Exploratory
 
@@ -96,9 +96,9 @@ Full model outputs and odds ratio forest plots are in the notebook.
 
 ## Key Takeaway
 
-Multi-category users — particularly those engaging with TV/Movies and Books together — were significantly more likely to be Promoters and showed higher long-term engagement. The NPS decline between 2021 and 2025 was partly **compositional**: the growing newsletter segment had a lower baseline Promoter rate (24%) than app users (34%), rather than reflecting deteriorating experience among existing users.
+Multi-category users — particularly those engaging with TV/Movies and Books together — were significantly more likely to be Promoters and showed higher long-term engagement. The NPS decline between 2021 and 2025 was partly **compositional**: the growing ProductB segment had a lower baseline Promoter rate (24%) than ProductA users (34%), rather than reflecting deteriorating experience among existing users.
 
-**Decision:** Multi-category newsletters were retained as the primary format based on these findings.
+**Decision:** Multi-category ProductBs were retained as the primary format based on these findings.
 
 **Secondary recommendation:** Early retention intervention. W2 and M2 activity were leading indicators of both sessions and NPS — onboarding investment in the first 8 weeks is likely high-leverage.
 
