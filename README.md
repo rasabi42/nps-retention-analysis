@@ -136,9 +136,8 @@ Multi-category users — particularly those engaging with TV/Movies and Books to
 
 1. Clone the repo
 2. Open `notebooks/nps_regression_analysis.ipynb` in [Google Colab](https://colab.research.google.com) or Jupyter
-3. Upload your own data CSV when prompted in Step 2, or use `data/analysis_ready.csv` to explore the structure
-4. Update column mappings in Step 4 if using your own data
-5. Run all cells in order
+3. Use `data/analysis_ready.csv` to explore the structure (during 2nd step of notebook)
+4. Run all cells in order
 
 **Dependencies** are installed automatically in the first cell:
 ```
