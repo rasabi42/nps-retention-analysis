@@ -1,4 +1,24 @@
-# Repository Structure
+## NPS Retention Analysis — Multi-Year Mixed-Methods Study
+
+**Tools:** Python · SQL · Excel · Power BI · Mixpanel  
+**Methods:** Logistic regression · Linear regression · Two-proportion Z-tests  
+**Dataset:** 4 survey waves (2021, 2023, 2024, 2025) + Mixpanel behavioral export  
+
+---
+
+## Research Question
+
+As the product transitioned toward a new product (ProductB) and acquisition model, a strategic question emerged: **do media category preferences and early engagement behaviors predict long-term retention and user satisfaction?** And does NPS hold up as the ProductB audience grows?
+
+This project tested three standing product hypotheses using a longitudinal dataset I assembled from four independent NPS surveys combined with behavioral data from Mixpanel.
+
+> **Hypothesis 1:** Users who engage across multiple media categories have longer retention  
+> **Hypothesis 2:** Social features (follower count) are associated with higher engagement  
+> **Hypothesis 3:** NPS differs meaningfully between ProductA and ProductB users  
+
+---
+
+## Repository Structure
 
 ```
 nps-retention-analysis/
@@ -22,26 +42,6 @@ nps-retention-analysis/
     ├── s5_followers.png
     └── s6_full_model.png
 ```
-
----
-
-## NPS Retention Analysis — Multi-Year Mixed-Methods Study
-
-**Tools:** Python · SQL · Excel · Power BI · Mixpanel  
-**Methods:** Logistic regression · Linear regression · Two-proportion Z-tests  
-**Dataset:** 4 survey waves (2021, 2023, 2024, 2025) + Mixpanel behavioral export  
-
----
-
-## Research Question
-
-As the product transitioned toward a new product (ProductB) and acquisition model, a strategic question emerged: **do media category preferences and early engagement behaviors predict long-term retention and user satisfaction?** And does NPS hold up as the ProductB audience grows?
-
-This project tested three standing product hypotheses using a longitudinal dataset I assembled from four independent NPS surveys combined with behavioral data from Mixpanel.
-
-> **Hypothesis 1:** Users who engage across multiple media categories have longer retention  
-> **Hypothesis 2:** Social features (follower count) are associated with higher engagement  
-> **Hypothesis 3:** NPS differs meaningfully between ProductA and ProductB users  
 
 ---
 
