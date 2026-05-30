@@ -57,7 +57,7 @@ Data preparation happened in three stages before any analysis:
 - Flagged user type using `CASE WHEN` based on presence of session data
 - Excluded session outliers above z-score threshold before export
 
-The full SQL query is in [`/sql/join_and_flag.sql`](sql/join_and_flag.sql).
+The full SQL query is in [`/sql/join.sql`](sql/join.sql).
 
 ### Stage 3 — Python
 - Loaded single joined CSV into Google Colab
