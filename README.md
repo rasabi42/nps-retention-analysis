@@ -1,3 +1,32 @@
+---
+
+## Repository Structure
+
+```
+nps-retention-analysis/
+│
+├── README.md
+├── data/
+│   └── analysis_ready.csv               # Anonymized sample (same structure as full dataset)
+├── sql/
+│   └── join_and_flag.sql        # Full SQLite pipeline query
+├── notebooks/
+│   └── nps_regression_analysis.ipynb   # Full analysis notebook
+└── outputs/
+    ├── p1_nps_trend.png
+    ├── p2_category.png
+    ├── p3_sessions.png
+    ├── p4_user_type.png
+    ├── s1_retention_sessions.png
+    ├── s2_retention_nps.png
+    ├── s3_genres.png
+    ├── s4_demographics.png
+    ├── s5_followers.png
+    └── s6_full_model.png
+```
+
+---
+
 # NPS Retention Analysis — Multi-Year Mixed-Methods Study
 
 **Tools:** Python · SQL · Excel · Power BI · Mixpanel  
@@ -102,33 +131,6 @@ Multi-category users — particularly those engaging with TV/Movies and Books to
 **Decision:** Multi-category ProductBs were retained as the primary format based on these findings.
 
 **Secondary recommendation:** Early retention intervention. W2 and M2 activity were leading indicators of both sessions and NPS — onboarding investment in the first 8 weeks is likely high-leverage.
-
----
-
-## Repository Structure
-
-```
-nps-retention-analysis/
-│
-├── README.md
-├── data/
-│   └── analysis_ready.csv               # Anonymized sample (same structure as full dataset)
-├── sql/
-│   └── join_and_flag.sql        # Full SQLite pipeline query
-├── notebooks/
-│   └── nps_regression_analysis.ipynb   # Full analysis notebook
-└── outputs/
-    ├── p1_nps_trend.png
-    ├── p2_category.png
-    ├── p3_sessions.png
-    ├── p4_user_type.png
-    ├── s1_retention_sessions.png
-    ├── s2_retention_nps.png
-    ├── s3_genres.png
-    ├── s4_demographics.png
-    ├── s5_followers.png
-    └── s6_full_model.png
-```
 
 ---
 
