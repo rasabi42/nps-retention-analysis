@@ -1,4 +1,4 @@
-## NPS Retention Analysis — Multi-Year Mixed-Methods Study
+## NPS Retention Analysis: Multi-Year Mixed-Methods Study
 
 **Tools:** Python · SQL · Excel · Power BI · Mixpanel  
 **Methods:** Logistic regression · Linear regression · Two-proportion Z-tests  
