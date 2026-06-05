@@ -79,15 +79,16 @@ ORDER BY appearances DESC;
 
 
 -- STEP 5: FINAL EXPORT QUERY
+-- Deduplicates behavioral data via CTE, joins to survey on normalized email, flags user type, and excludes session outliers above a hard cutoff of 12,000 sessions.
 WITH behavior_dedup AS (
     SELECT * FROM (
         SELECT
             *,
             ROW_NUMBER() OVER (
                 PARTITION BY LOWER(TRIM(email))
-                ORDER BY first_app_open DESC
+                ORDER BY first_app_open_d DESC
             ) AS rn
-        FROM behavioral_data
+        FROM behavioral_data b
     )
     WHERE rn = 1
 )
@@ -95,27 +96,28 @@ WITH behavior_dedup AS (
 SELECT
     s.email,
     s.nps,
-    s.survey                                AS survey_year,
-    s.primary_media                         AS primary_category,
+    s.survey_year,                           
+    s.primary_category,
     s.age,
     s.gender,
-    b.total_app_sessions,
-    b.first_app_open,
+    b.total_sessions,
     b.birth_year,
     b.region,
+    b.first_app_open_d,
 
     CASE
-        WHEN b.total_app_sessions IS NULL THEN 'newsletter'
+        WHEN b.total_sessions IS NULL THEN 'newsletter'
         ELSE 'app_user'
     END AS user_type
 
 FROM survey_nps s
-LEFT JOIN behavior_dedup b
+LEFT JOIN behavioral_data b
     ON LOWER(TRIM(s.email)) = LOWER(TRIM(b.email))
 
 WHERE
-    b.total_app_sessions IS NULL
+    b.total_sessions IS NULL
     OR
-    CAST(b.total_app_sessions AS INTEGER) <= 12000
+    CAST(b.total_sessions AS INTEGER) <= 12000
 
-ORDER BY s.survey, s.email;
+ORDER BY s.survey_year, s.email;
+
