@@ -1,7 +1,5 @@
 -- STEP 1: SANITY CHECKS
 -- Row counts per survey
-SELECT 'survey_2021' AS source, COUNT(*) AS rows FROM survey_2021
-UNION ALL
 SELECT 'survey_nps',            COUNT(*)         FROM survey_nps
 UNION ALL
 SELECT 'behavioral_data',       COUNT(*)         FROM behavioral_data;
