@@ -27,6 +27,7 @@ SELECT * FROM behavioral_data  LIMIT 3;
 
 
 -- STEP 2: MATCH RATE CHECK
+-- Adjust emails by upper/lower case and trim potential spaces
 SELECT
     COUNT(*)                          AS total_survey_rows,
     COUNT(b.email)                    AS matched_to_behavioral,
@@ -36,7 +37,7 @@ SELECT
     )                                 AS match_rate_pct
 FROM survey_nps s
 LEFT JOIN behavioral_data b
-    ON LOWER(s.email) = LOWER(b.email);
+    ON LOWER(TRIM(s.email)) = LOWER(TRIM(b.email))
 
 
 -- STEP 3: QUICK ANALYSIS QUERIES
