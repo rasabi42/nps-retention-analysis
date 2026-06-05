@@ -41,20 +41,6 @@ LEFT JOIN behavioral_data b
 
 
 -- STEP 3: QUICK ANALYSIS QUERIES
--- Promoter rate by platform
-SELECT
-    b.platform,
-    COUNT(*)                                        AS total_users,
-    ROUND(AVG(CAST(s.nps AS FLOAT)), 2)             AS avg_nps,
-    SUM(CASE WHEN s.nps >= 9 THEN 1 ELSE 0 END)    AS promoters,
-    ROUND(
-        SUM(CASE WHEN s.nps >= 9 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1
-    )                                               AS promoter_rate_pct
-FROM survey_nps s
-LEFT JOIN behavioral_data b
-    ON LOWER(s.email) = LOWER(b.email)
-GROUP BY b.platform;
-
 -- Promoter rate by survey year
 SELECT
     s.survey_year,
