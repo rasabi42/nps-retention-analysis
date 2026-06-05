@@ -104,6 +104,13 @@ SELECT
     b.birth_year,
     b.region,
     b.first_app_open_d,
+    b.follower_count,
+    b.w2_active,
+    b.m2_active,
+    b.lifetime_session,
+    b.genres_books,
+    b.genres_screenpla,
+    b.genres_podcasts,
 
     CASE
         WHEN b.total_sessions IS NULL THEN 'newsletter'
@@ -120,4 +127,5 @@ WHERE
     CAST(b.total_sessions AS INTEGER) <= 12000
 
 ORDER BY s.survey_year, s.email;
+
 
