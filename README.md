@@ -27,7 +27,7 @@ nps-retention-analysis/
 ├── data/
 │   └── analysis_ready.csv               # Anonymized sample (same structure as full dataset)
 ├── sql/
-│   └── join_and_flag.sql        # Full SQLite pipeline query
+│   └── join.sql        # Full SQLite pipeline query
 ├── notebooks/
 │   └── nps_regression_analysis.ipynb   # Full analysis notebook
 └── outputs/
