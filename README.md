@@ -79,9 +79,9 @@ Data preparation happened in three stages before any analysis:
 - Merged TV and Movies into one combined category for consistency across years
 
 ### Stage 2 — SQL
-- Stacked survey waves using `UNION ALL`, preserving year labels and NULL-padding mismatched columns
-- Deduplicated the behavioral export using a CTE with `ROW_NUMBER() OVER (PARTITION BY LOWER(TRIM(email)) ORDER BY first_app_open DESC)` — keeping only the most recent record per user where multiple entries existed
-- Joined the deduplicated behavioral table to survey data via `LEFT JOIN ON LOWER(TRIM(s.email)) = LOWER(TRIM(b.email))` — applying both `LOWER()` and `TRIM()` to handle casing and whitespace inconsistencies
+- Ran sanity checks (row counts, duplicate emails, year breakdown) on the pre-combined survey data and the behavioral export before joining
+- Deduplicated the behavioral export using a CTE with `ROW_NUMBER() OVER (PARTITION BY LOWER(TRIM(email)) ORDER BY first_app_open_d DESC)`, keeping only the most recent record per user where multiple entries existed
+ Joined the deduplicated behavioral table to survey data via `LEFT JOIN ON LOWER(TRIM(s.email)) = LOWER(TRIM(b.email))` to handle casing and whitespace inconsistencies
 - Flagged user type using `CASE WHEN` based on presence of session data
 - Excluded session outliers above a hard cutoff of 12,000 sessions (`CAST(total_app_sessions AS INTEGER) <= 12000`)
 
